@@ -23,7 +23,7 @@ namespace ex03_wpf_again
 
         private void SldTemp_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            pgbTemp.Value = e.NewValue;
+            PgbTemp.Value = e.NewValue;
         }
 
         private void BtnCheck_Click(object sender, RoutedEventArgs e)

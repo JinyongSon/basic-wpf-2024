@@ -17,21 +17,20 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <!-- Margin left, top, right, bottom 순으로 여백이 만들어짐 -->
-        <!-- Margin값이 하나(10[ltrb]), 둘(10[lr],5[tb]), 넷(10[l], 5[t], 6[r], 15[b] -->
-        <GroupBox Grid.Row="0" Grid.Column="0" Margin="10" Header="기본 컨트롤" FontWeight="Bold">
+        <!-- Margin값이 하나(10[ltrb]), 둘(10[lr], 5[tb]), 넷(10[l], 5[t], 6[r], 15[b])  -->
+        <GroupBox Grid.Row="0" Grid.Column="0" Margin="10" Header="기본 컨트롤">
             <StackPanel>
                 <Label Content="라벨" />
                 <TextBlock Text="텍스트블록" Margin="5" />
                 <TextBox Text="텍스트박스" />
-                <ProgressBar x:Name="pgbTemp" Value="40" Height="20" />
-                <Slider x:Name="SldTemp" Value="40" Minimum="0" Maximum="100"
-                        ValueChanged="SldTemp_ValueChanged" />
+                <ProgressBar x:Name="PgbTemp" Value="40" Height="20" />
+                <Slider x:Name="SldTemp" Value="40" Minimum="0" Maximum="100" ValueChanged="SldTemp_ValueChanged" />
                 <PasswordBox x:Name="PsbTemp" Password="12345" />
                 <Button x:Name="BtnCheck" Content="비번체크" Click="BtnCheck_Click" />
 
                 <StackPanel Orientation="Horizontal">
                     <RadioButton x:Name="RdoMale" Content="남자" />
-                    <RadioButton x:Name="RdoFeMale" Content="여자" />
+                    <RadioButton x:Name="RdoFemale" Content="여자" />
                 </StackPanel>
                 <ToggleButton Content="토글버튼" />
 
@@ -41,7 +40,7 @@
         <GroupBox Grid.Row="1" Grid.Column="0" Margin="10" Header="이미지, 동영상">
             <StackPanel>
                 <Image Source="/sample.png" Height="50" />
-                <MediaElement x:Name="MdeMovie" LoadedBehavior="Play" />
+                <MediaElement x:Name="MdeMovie" LoadedBehavior="Play" Source="/resource/sample.wmv" />
             </StackPanel>
         </GroupBox>
 
@@ -68,11 +67,44 @@
                     </CheckBox>
                 </Button>
 
-                <Border Background="Orange" Padding="5" Width="120" Height="50" CornerRadius="10">
+                <Border Background="Orange" Padding="5" Width="120" Height="50" CornerRadius="10,0,10,0">
                     <Button Content="버튼" Width="100" Height="30" />
                 </Border>
             </StackPanel>
         </GroupBox>
 
+        <!-- XML, XAML, HTML 동일 주석 
+             Grid컨트롤 자식 컨트롤은 부모의 영향을 받음.
+             부모컨트롤에 Width, Height가 없으면 자식컨트롤은 부모의 사이즈를 물려받음
+             ViewBox를 쓰면 하위 컨트롤의 기본사이즈로 변경, Default="Uniform"
+          -->
+        <Grid Grid.Row="0" Grid.Column="2" Background="LightBlue">
+            <Viewbox Stretch="Fill">
+                <Button Content="Button A"/>
+            </Viewbox>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="2" Background="Azure">
+            <!-- Canvas는 하위컨트롤이 잘려서 나옴
+                 Grid는 하위컨트롤을 Grid에 사이즈 맞춰서 그려줌(Width, Height 지정안할때)
+            -->
+            <!--<Grid Width="50" Height="50" Background="Orange">
+                <Button Content="Hello WPF" Margin="5" />
+            </Grid>-->
+            <Grid Background="Orange">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="BA" Canvas.Top="0" Canvas.Left="0" DockPanel.Dock="Left" Grid.Row="0" Grid.Column="0"/>
+                <Button Content="BB" Canvas.Top="25" Canvas.Left="0" DockPanel.Dock="Top" Grid.Row="0" Grid.Column="1" />
+                <Button Content="BC" Canvas.Top="25" Canvas.Left="25" DockPanel.Dock="Right" Grid.Row="1" Grid.Column="0" />
+                <Button Content="BD" Canvas.Top="25" Canvas.Left="25" Grid.Row="1" Grid.Column="1" />
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

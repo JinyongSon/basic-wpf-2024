@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ex02_wpf_condrols", "ex02_w
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex03_wpf_again", "ex03_wpf_again\ex03_wpf_again.csproj", "{08248A74-6832-451C-8344-96B451ECFE97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex04_wpf_bikeshop", "ex04_wpf_bikeshop\ex04_wpf_bikeshop.csproj", "{BDA0ECDB-EFD7-43CD-8095-5D2683812935}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{08248A74-6832-451C-8344-96B451ECFE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08248A74-6832-451C-8344-96B451ECFE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08248A74-6832-451C-8344-96B451ECFE97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA0ECDB-EFD7-43CD-8095-5D2683812935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA0ECDB-EFD7-43CD-8095-5D2683812935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA0ECDB-EFD7-43CD-8095-5D2683812935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA0ECDB-EFD7-43CD-8095-5D2683812935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
