@@ -5,10 +5,10 @@
         <Setter Property="Height" Value="50" />
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush>
+                <RadialGradientBrush>
                     <GradientStop Color="Aqua" />
                     <GradientStop Color="#25A2FA" Offset="1" />
-                </LinearGradientBrush>
+                </RadialGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>
