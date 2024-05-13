@@ -154,6 +154,9 @@ https://github.com/JinyongSon/basic-wpf-2024/assets/129734178/b8050072-eaea-4e81
     - 개인프로젝트 참조소스
 
 
+https://github.com/JinyongSon/basic-wpf-2024/assets/129734178/5456037c-43f6-451e-b5a7-3597eba7de89
+
+
 
 ## 8일차
 - WPF 개인프로젝트 포트폴리오 작업
