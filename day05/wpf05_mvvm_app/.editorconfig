@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# Default severity for analyzer diagnostics with category 'Globalization'
+dotnet_analyzer_diagnostic.category-Globalization.severity = none
+
+# CS8601: 가능한 null 참조 할당입니다.
+dotnet_diagnostic.CS8601.severity = none
+
+# CS8602: null 가능 참조에 대한 역참조입니다.
+dotnet_diagnostic.CS8602.severity = none

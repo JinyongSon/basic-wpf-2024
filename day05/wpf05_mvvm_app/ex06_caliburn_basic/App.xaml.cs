@@ -11,8 +11,7 @@ namespace ex06_caliburn_basic
     {
         public App()
         {
-            //InitializeComponent(); // Bootstrapper를 Application에 연결.
+            // InitializeComponent(); // Bootstrapper를 Application에 연결.
         }
     }
-
 }

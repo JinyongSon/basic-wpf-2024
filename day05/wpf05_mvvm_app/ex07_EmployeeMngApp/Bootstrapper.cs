@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace ex07_EmployeeMngApp
 {
-    internal class Bootstrapper : BootstrapperBase
+    public class Bootstrapper : BootstrapperBase
     {
         public Bootstrapper()
         {

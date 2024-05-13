@@ -1,6 +1,4 @@
-﻿using MahApps.Metro.Controls.Dialogs;
-
-namespace ex07_EmployeeMngApp.Helpers
+﻿namespace ex10_MovieFinder2024.Helpers
 {
     public class Common
     {
@@ -8,11 +6,7 @@ namespace ex07_EmployeeMngApp.Helpers
                                                     "Initial Catalog=EMS;" +
                                                     "Persist Security Info=True;" +
                                                     "User ID=ems_user;" +
-                                                    "Encrypt=False;"+
+                                                    "Encrypt=False;" +
                                                     "Password=ems_p@ss";
-
-
-        // Metro방식 다이얼로그 적용을 위해선 반드시 필요!
-        public static IDialogCoordinator DialogCoordinator { get; set; }
     }
 }

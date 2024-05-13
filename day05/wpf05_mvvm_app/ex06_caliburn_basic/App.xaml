@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <!-- xaml 상의 파란색 밑줄은 대부분 빌드(F6)로 사라짐. -->
+                    <!-- xaml 상의 파란색 밑줄은 대부분 빌드(F6)로 사라짐 -->
                     <local:Bootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
