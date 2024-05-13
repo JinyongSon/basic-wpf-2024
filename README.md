@@ -143,6 +143,10 @@ IoT 개발자 WPF 학습리포지토리
 - MovieFinder 2024 완료
 
 
+https://github.com/JinyongSon/basic-wpf-2024/assets/129734178/b8050072-eaea-4e81-985b-37c25e2312df
+
+
+
 - 데이터포털 API 연동앱 예제
     - CefSharp 사용시 플랫폼 대상 AnyCPU에서 x64로 변경필수!
     - MahApps.Metro UI, IconPacks
