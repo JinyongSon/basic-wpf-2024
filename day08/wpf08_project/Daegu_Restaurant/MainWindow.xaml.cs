@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CefSharp.DevTools.Debugger;
 using Daegu_Restaurant.Models;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
@@ -164,16 +165,71 @@ namespace Daegu_Restaurant
 
         }
 
-        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        private async void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
                 {
                     conn.Open();
+                    string searchKeyword = TxtMenuName.Text.Trim();
+
+                    string sql = "SELECT * FROM Restaurant WHERE Mnu LIKE @searchKeyword";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@searchKeyword", "%" + searchKeyword + "%");
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    var searchResults = new List<Restaurant>();
+
+                    while (reader.Read())
+                    {
+                        var restaurant = new Restaurant();
+
+                        restaurant.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                        restaurant.Cnt = reader.GetInt32(reader.GetOrdinal("Cnt"));
+                        restaurant.Gng_cs = reader["Gng_cs"].ToString();
+                        restaurant.Fd_cs = reader["Fd_cs"].ToString();
+                        restaurant.Bz_nm = reader["Bz_nm"].ToString();
+                        restaurant.Tlno = reader["Tlno"].ToString();
+                        restaurant.Mbz_hr = reader["Mbz_hr"].ToString();
+                        restaurant.Seat_cnt = reader["Seat_cnt"].ToString();
+                        restaurant.Pkpl = reader["Pkpl"].ToString();
+                        restaurant.Hp = reader["Hp"].ToString();
+                        restaurant.Psb_frn = reader["Psb_frn"].ToString();
+                        restaurant.Bkn_yn = reader["Bkn_yn"].ToString();
+                        restaurant.Infn_fcl = reader["Infn_fcl"].ToString();
+                        restaurant.Brft_yn = reader["Brft_yn"].ToString();
+                        restaurant.Dssrt_yn = reader["Dssrt_yn"].ToString();
+                        restaurant.Mnu = reader["Mnu"].ToString();
+                        restaurant.Smpl_desc = reader["Smpl_desc"].ToString();
+                        restaurant.Sbw = reader["Sbw"].ToString();
+                        restaurant.Bus = reader["Bus"].ToString();
+
+                        searchResults.Add(restaurant);
+                    }
+                    reader.Close();
+
+                    if (GrdResult.ItemsSource is List<Restaurant> currentList)
+                    {
+                        // 기존 리스트에 검색 결과를 추가합니다.
+                        currentList.Clear(); // 기존 결과를 삭제합니다.
+                        currentList.AddRange(searchResults); // 새로운 결과를 추가합니다.
+                    }
+                    else
+                    {
+                        // 만약 기존에 설정된 ItemsSource가 List<Restaurant>가 아니라면, 새로운 리스트로 설정합니다.
+                        GrdResult.ItemsSource = searchResults;
+                    }
+
+                    StsResult.Content = $"검색 완료: {searchResults.Count}";
 
 
                 }
+            }
+            catch (Exception ex)
+            {
+                await this.ShowMessageAsync("검색 오류", $"검색 중 오류가 발생했습니다: {ex.Message}");
             }
         }
     }

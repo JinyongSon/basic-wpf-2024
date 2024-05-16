@@ -38,7 +38,7 @@
                 <Button x:Name="BtnSaveData" Content="저장" Width="80" Margin="5,10"
                         Style="{StaticResource MahApps.Styles.Button.Square.Highlight}"
                         Click="BtnSaveData_Click" />
-                <TextBox x:Name="TxtMovieName" Grid.Row="0" Grid.Column="0" 
+                <TextBox x:Name="TxtMenuName" Grid.Row="0" Grid.Column="0" 
                          Margin="5,10" FontSize="14"
                          mah:TextBoxHelper.Watermark="검색할 메뉴 입력"
                          mah:TextBoxHelper.UseFloatingWatermark="True"
