@@ -163,5 +163,18 @@ namespace Daegu_Restaurant
         {
 
         }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
+                {
+                    conn.Open();
+
+
+                }
+            }
+        }
     }
 }

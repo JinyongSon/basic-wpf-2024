@@ -5,14 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-    xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:Daegu_Restaurant"
     mc:Ignorable="d"
         Title="Daegu Restaurant Check" Height="450" Width="800" MinHeight="300" MinWidth="600" 
     Loaded="MetroWindow_Loaded">
     <mah:MetroWindow.IconTemplate>
         <DataTemplate>
-            <iconPack:PackIconWeatherIcons Kind="Dust" Margin="10,7,0,0" Foreground="White" />
+            <iconPacks:PackIconWeatherIcons Kind="Dust" Margin="10,7,0,0" Foreground="White" />
         </DataTemplate>
     </mah:MetroWindow.IconTemplate>
     <Grid>
@@ -31,19 +31,31 @@
 
             <Label Content="대구광역시 맛집 정보 앱" FontSize="16" FontWeight="Bold" Margin="10" />
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Width="463" Margin="70,-5,0,5">
                 <Button x:Name="BtnReqRealtime" Content="실시간조회" Width="100" Margin="5,10" 
                         Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
                         Click="BtnReqRealtime_Click" />
                 <Button x:Name="BtnSaveData" Content="저장" Width="80" Margin="5,10"
                         Style="{StaticResource MahApps.Styles.Button.Square.Highlight}"
                         Click="BtnSaveData_Click" />
-                <ComboBox x:Name="CboReqDate" Width="150" Margin="5,10,10,10"
-                          Style="{StaticResource MahApps.Styles.ComboBox}"
-                          mah:TextBoxHelper.Watermark="검색날짜 선택"
-                          mah:TextBoxHelper.UseFloatingWatermark="True"
-                          mah:TextBoxHelper.ClearTextButton="True"
-                          SelectionChanged="CboReqDate_SelectionChanged" />
+                <TextBox x:Name="TxtMovieName" Grid.Row="0" Grid.Column="0" 
+                         Margin="5,10" FontSize="14"
+                         mah:TextBoxHelper.Watermark="검색할 메뉴 입력"
+                         mah:TextBoxHelper.UseFloatingWatermark="True"
+                         mah:TextBoxHelper.ClearTextButton="True" Width="144" />
+                <Button x:Name="BtnSearch" Grid.Row="0" Grid.Column="1" Margin="5,10" 
+                        FontSize="14" Content="검색"
+                        Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
+                        Click="BtnSearch_Click" Width="99">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconModern Kind="Magnify" Margin="5" />
+                                <TextBlock Text="{Binding}" Margin="5" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
             </StackPanel>
         </Grid>
 
