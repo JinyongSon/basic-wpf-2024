@@ -155,13 +155,17 @@ namespace Daegu_Restaurant
             }
         }
 
-        private void CboReqDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void GrdResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (GrdResult.SelectedItem is Restaurant selectedRestaurant)
+            {
+                // 선택된 레스토랑의 위치를 가져옵니다. 여기서는 Gng_cs 필드를 사용한다고 가정합니다.
+                string location = selectedRestaurant.Gng_cs;
+
+                // 지도 창을 엽니다.
+                MapWindow mapWindow = new MapWindow(location);
+                mapWindow.Show();
+            }
 
         }
 
@@ -174,6 +178,9 @@ namespace Daegu_Restaurant
                     conn.Open();
                     string searchKeyword = TxtMenuName.Text.Trim();
 
+                    // 초기화: 기존 결과를 초기화합니다.
+                    GrdResult.ItemsSource = null;
+
                     string sql = "SELECT * FROM Restaurant WHERE Mnu LIKE @searchKeyword";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@searchKeyword", "%" + searchKeyword + "%");
@@ -181,6 +188,7 @@ namespace Daegu_Restaurant
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     var searchResults = new List<Restaurant>();
+
 
                     while (reader.Read())
                     {
@@ -210,21 +218,9 @@ namespace Daegu_Restaurant
                     }
                     reader.Close();
 
-                    if (GrdResult.ItemsSource is List<Restaurant> currentList)
-                    {
-                        // 기존 리스트에 검색 결과를 추가합니다.
-                        currentList.Clear(); // 기존 결과를 삭제합니다.
-                        currentList.AddRange(searchResults); // 새로운 결과를 추가합니다.
-                    }
-                    else
-                    {
-                        // 만약 기존에 설정된 ItemsSource가 List<Restaurant>가 아니라면, 새로운 리스트로 설정합니다.
-                        GrdResult.ItemsSource = searchResults;
-                    }
+                    GrdResult.ItemsSource = searchResults;
 
-                    StsResult.Content = $"검색 완료: {searchResults.Count}";
-
-
+                    StsResult.Content = $"검색 완료: {searchResults.Count}건";
                 }
             }
             catch (Exception ex)
