@@ -19,6 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
@@ -60,13 +61,55 @@
         </Grid>
 
         <!-- 중간 데이터그리드영역-->
-        <DataGrid x:Name="GrdResult" Grid.Row="1" Margin="10"
+        <DataGrid x:Name="GrdResult" Grid.Row="1" Margin="10,10,10,5"
                   IsReadOnly="True" ItemsSource="{Binding}"
                   Style="{StaticResource MahApps.Styles.DataGrid.Azure}" 
                   MouseDoubleClick="GrdResult_MouseDoubleClick" />
 
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button x:Name="BtnAddFavorite" Content="즐겨찾기 추가" Margin="5,20" FontSize="12"
+            Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
+            Click="BtnAddFavorite_Click">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="PlaylistPlus" Margin="5" />
+                            <TextBlock Text="{Binding}" Margin="5" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button x:Name="BtnViewFavorite" Content="즐겨찾기 보기" Margin="5,20" FontSize="12"
+            Style="{StaticResource MahApps.Styles.Button.Square.Highlight}"
+            Click="BtnViewFavorite_Click">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="PlaylistCheck" Margin="5" />
+                            <TextBlock Text="{Binding}" Margin="5" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button x:Name="BtnDelFavorite" Content="즐겨찾기 삭제" Margin="5,20" FontSize="12"
+            Style="{StaticResource MahApps.Styles.Button.Square}"
+            Click="BtnDelFavorite_Click">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="PlaylistRemove" Margin="5" />
+                            <TextBlock Text="{Binding}" Margin="5" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </StackPanel>
+
+
         <!-- 맨하단 상태바 위치 -->
-        <StatusBar Grid.Row="2">
+        <StatusBar Grid.Row="3">
             <StatusBarItem Content="대구광역시 맛집 정보 앱" />
             <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
             <StatusBarItem x:Name="StsResult" />
