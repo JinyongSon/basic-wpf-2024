@@ -98,8 +98,8 @@ namespace Daegu_Restaurant
                         Bus = Convert.ToString(item["BUS"]),
                     });
                 }
+                GrdResult.ItemsSource = restaurants;
                 isFavorite = false;
-                this.DataContext = restaurants;
                 StsResult.Content = $"OpenAPI {restaurants.Count}건 조회완료!";
             }
         }
@@ -382,7 +382,7 @@ namespace Daegu_Restaurant
                         favorites.Add(favorite);
                     }
 
-                    this.DataContext = favorites;
+                    GrdResult.ItemsSource = favorites;
                     isFavorite = true; // 즐겨찾기 DB에서 
                     StsResult.Content = $"즐겨찾기 {favorites.Count}건 조회완료";
                 }
