@@ -31,7 +31,7 @@ namespace Daegu_Restaurant.Models
 
         public static readonly string CHECK_QUERY = @"SELECT COUNT(*)
                                                         FROM Favorite
-                                                       WHERE Id = @Id";
+                                                       WHERE Cnt = @Cnt";
 
         public static readonly string SELECT_QUERY = @"SELECT [Id]
                                                             ,[Cnt]

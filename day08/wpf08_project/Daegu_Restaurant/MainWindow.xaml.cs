@@ -98,7 +98,7 @@ namespace Daegu_Restaurant
                         Bus = Convert.ToString(item["BUS"]),
                     });
                 }
-
+                isFavorite = false;
                 this.DataContext = restaurants;
                 StsResult.Content = $"OpenAPI {restaurants.Count}건 조회완료!";
             }
@@ -231,7 +231,6 @@ namespace Daegu_Restaurant
                 await this.ShowMessageAsync("검색 오류", $"검색 중 오류가 발생했습니다: {ex.Message}");
             }
 
-            BtnViewFavorite_Click(sender, e); // 저장후 저장된 즐겨찾기 바로보기
 
         }
 
@@ -290,7 +289,7 @@ namespace Daegu_Restaurant
                     {
                         // 저장되기 전에 이미 저장된 데이터인지 확인 후 
                         SqlCommand chkCmd = new SqlCommand(Favorite.CHECK_QUERY, conn);
-                        chkCmd.Parameters.AddWithValue("@Id", item.Id);
+                        chkCmd.Parameters.AddWithValue("@Cnt", item.Cnt);
                         var cnt = Convert.ToInt32(chkCmd.ExecuteScalar()); // COUNT(*) 등의 1row, 1coloumn값을 리턴할때
 
                         if (cnt == 1) continue;  // 이미 데이터가 있으면 패스
@@ -333,6 +332,7 @@ namespace Daegu_Restaurant
             {
                 await this.ShowMessageAsync("오류", $"즐겨찾기 오류 {ex.Message}");
             }
+            BtnViewFavorite_Click(sender, e); // 저장후 저장된 즐겨찾기 바로보기
         }
 
         private async void BtnViewFavorite_Click(object sender, RoutedEventArgs e)
