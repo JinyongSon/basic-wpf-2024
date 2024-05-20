@@ -178,3 +178,9 @@ https://github.com/JinyongSon/basic-wpf-2024/assets/129734178/5456037c-43f6-451e
     - 즐겨찾기한 목록을 클릭하여 삭제하는 기능
 - 더블클릭 기능
     - 더블클릭을 하면 구글맵과 연동되어 주소를 알려주는 기능
+ 
+
+
+
+https://github.com/JinyongSon/basic-wpf-2024/assets/129734178/f506dab2-dd67-4faa-a706-212576eb6304
+
